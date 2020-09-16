@@ -6,19 +6,19 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "N32B"
-Date "2020-09-06"
-Rev "0.1"
+Date "2020-09-12"
+Rev "1.2"
 Comp "SHIK"
 Comment1 "https://shik.tech"
 Comment2 "CC0 1.0 Universal"
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text GLabel 6050 5550 0    50   Input ~ 0
+Text GLabel 3900 6700 0    50   Input ~ 0
 GND
-Text GLabel 6050 5450 0    50   Input ~ 0
+Text GLabel 3900 6600 0    50   Input ~ 0
 GND
-Text GLabel 6050 5350 0    50   Input ~ 0
+Text GLabel 3900 6500 0    50   Input ~ 0
 VCC
 Text GLabel 3500 2050 0    50   Input ~ 0
 VCC
@@ -56,75 +56,71 @@ Text GLabel 900  6150 2    50   Input ~ 0
 GND
 Text GLabel 3500 850  0    50   Input ~ 0
 VCC
-Text GLabel 4650 4700 2    50   Input ~ 0
+Text GLabel 4950 4650 2    50   Input ~ 0
 SEGG
-Text GLabel 4650 4550 2    50   Input ~ 0
+Text GLabel 4950 4500 2    50   Input ~ 0
 SEGDP
-Text GLabel 4650 4400 2    50   Input ~ 0
+Text GLabel 4950 4350 2    50   Input ~ 0
 SEGA
-Text GLabel 4650 4250 2    50   Input ~ 0
+Text GLabel 4950 4200 2    50   Input ~ 0
 SEGF
-Text GLabel 4650 4100 2    50   Input ~ 0
+Text GLabel 4950 4050 2    50   Input ~ 0
 DIG0
-Text GLabel 3700 4700 0    50   Input ~ 0
+Text GLabel 4000 4650 0    50   Input ~ 0
 DIG1
-Text GLabel 3700 4550 0    50   Input ~ 0
+Text GLabel 4000 4500 0    50   Input ~ 0
 SEGB
-Text GLabel 3700 4400 0    50   Input ~ 0
+Text GLabel 4000 4350 0    50   Input ~ 0
 SEGC
-Text GLabel 3700 4250 0    50   Input ~ 0
+Text GLabel 4000 4200 0    50   Input ~ 0
 SEGE
-Text GLabel 3700 4100 0    50   Input ~ 0
+Text GLabel 4000 4050 0    50   Input ~ 0
 SEGD
-Text GLabel 7150 4850 2    50   Input ~ 0
+Text GLabel 5000 6000 2    50   Input ~ 0
 SEGA
-Text GLabel 7150 5050 2    50   Input ~ 0
+Text GLabel 5000 6200 2    50   Input ~ 0
 SEGC
-Text GLabel 7150 4950 2    50   Input ~ 0
+Text GLabel 5000 6100 2    50   Input ~ 0
 SEGB
-Text GLabel 7150 5250 2    50   Input ~ 0
+Text GLabel 5000 6400 2    50   Input ~ 0
 SEGE
-Text GLabel 7150 5150 2    50   Input ~ 0
+Text GLabel 5000 6300 2    50   Input ~ 0
 SEGD
-Text GLabel 7150 4150 2    50   Input ~ 0
+Text GLabel 5000 5300 2    50   Input ~ 0
 DIG1
-Text GLabel 7150 5450 2    50   Input ~ 0
+Text GLabel 5000 6600 2    50   Input ~ 0
 SEGG
-Text GLabel 7150 5550 2    50   Input ~ 0
+Text GLabel 5000 6700 2    50   Input ~ 0
 SEGDP
-Text GLabel 7150 5350 2    50   Input ~ 0
+Text GLabel 5000 6500 2    50   Input ~ 0
 SEGF
-Text GLabel 7150 4050 2    50   Input ~ 0
+Text GLabel 5000 5200 2    50   Input ~ 0
 DIG0
-Text GLabel 8050 1200 2    50   Input ~ 0
+Text GLabel 8100 1150 2    50   Input ~ 0
 GND
-Text GLabel 8050 1600 2    50   Input ~ 0
-GND
-Text GLabel 7650 1200 0    50   Input ~ 0
+Text GLabel 7700 1150 0    50   Input ~ 0
 SWT1
-Text GLabel 9800 4750 2    50   Input ~ 0
+Text GLabel 6800 4550 2    50   Input ~ 0
 SWT1
-Text GLabel 7650 1600 0    50   Input ~ 0
+Text GLabel 6800 4450 2    50   Input ~ 0
 SWT2
-Text GLabel 9800 4650 2    50   Input ~ 0
-SWT2
-Text GLabel 8900 4650 0    50   Input ~ 0
+Text GLabel 5900 4450 0    50   Input ~ 0
 S0
-Text GLabel 8900 4750 0    50   Input ~ 0
+Text GLabel 5900 4550 0    50   Input ~ 0
 S1
-Text GLabel 8900 4850 0    50   Input ~ 0
+Text GLabel 5900 4650 0    50   Input ~ 0
 S2
-Text GLabel 8900 4950 0    50   Input ~ 0
+Text GLabel 5900 4750 0    50   Input ~ 0
 S3
-Text GLabel 8900 5250 0    50   Input ~ 0
+Text GLabel 5900 5050 0    50   Input ~ 0
 MUX1
-Text GLabel 8900 5350 0    50   Input ~ 0
+Text GLabel 5900 5150 0    50   Input ~ 0
 MUX2
-Text GLabel 8900 5050 0    50   Input ~ 0
+Text GLabel 5900 4850 0    50   Input ~ 0
 ENMUX1
-Text GLabel 8900 5150 0    50   Input ~ 0
+Text GLabel 5900 4950 0    50   Input ~ 0
 ENMUX2
-Text GLabel 9800 5250 2    50   Input ~ 0
+Text GLabel 6800 5050 2    50   Input ~ 0
 DIN
 Text GLabel 3900 1850 3    50   Input ~ 0
 S0
@@ -150,24 +146,24 @@ Text GLabel 6100 3050 2    50   Input ~ 0
 MUX2
 Text GLabel 6100 1850 2    50   Input ~ 0
 MUX1
-Text GLabel 6050 4050 0    50   Input ~ 0
+Text GLabel 3900 5200 0    50   Input ~ 0
 CLK
-Text GLabel 6050 4450 0    50   Input ~ 0
+Text GLabel 3900 5600 0    50   Input ~ 0
 DIN
-Text GLabel 6050 4250 0    50   Input ~ 0
+Text GLabel 3900 5400 0    50   Input ~ 0
 CS
-Text GLabel 5650 4750 0    50   Input ~ 0
+Text GLabel 3500 5900 0    50   Input ~ 0
 VCC
 $Comp
 L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R10
 U 1 1 5EF8712A
-P 5850 4750
-F 0 "R10" H 5850 4850 45  0000 C CNN
-F 1 "10K" H 5850 4650 45  0000 C CNN
-F 2 "Resistors:AXIAL-0.3-KIT" H 5850 4900 20  0001 C CNN
-F 3 "" H 5850 4750 60  0001 C CNN
-F 4 "RES-09435" H 5850 4550 60  0001 C CNN "Field4"
-	1    5850 4750
+P 3700 5900
+F 0 "R10" H 3700 6000 45  0000 C CNN
+F 1 "10K" H 3700 5800 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 3700 6050 20  0001 C CNN
+F 3 "" H 3700 5900 60  0001 C CNN
+F 4 "RES-09435" H 3700 5700 60  0001 C CNN "Field4"
+	1    3700 5900
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -184,12 +180,12 @@ $EndComp
 $Comp
 L Shik-Tech:7-segment-2digit-0.36inch-display Display1
 U 1 1 5F37F61E
-P 4200 4400
-F 0 "Display1" H 4175 4965 50  0000 C CNN
-F 1 "7-segment-2digit-0.36inch-display" H 4175 4874 50  0000 C CNN
-F 2 "shik:7-Segment-2-Digits-0.36inch" H 3950 4850 50  0001 C CNN
-F 3 "" H 3950 4850 50  0001 C CNN
-	1    4200 4400
+P 4500 4350
+F 0 "Display1" H 4475 4915 50  0000 C CNN
+F 1 "7-segment-2digit-0.36inch-display" H 4475 4824 50  0000 C CNN
+F 2 "shik:7-Segment-2-Digits-0.36inch" H 4250 4800 50  0001 C CNN
+F 3 "" H 4250 4800 50  0001 C CNN
+	1    4500 4350
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -267,136 +263,122 @@ $EndComp
 $Comp
 L MAX7219CNG:MAX7219CNG IC1
 U 1 1 5EF2EA44
-P 6650 4750
-F 0 "IC1" H 6600 5720 50  0000 C CNN
-F 1 "MAX7219CNG" H 6600 5629 50  0000 C CNN
-F 2 "MAX7219CNG:DIL24-3" H 6650 4750 50  0001 L BNN
-F 3 "" H 6650 4750 50  0001 L BNN
-F 4 "MAXIM" H 6650 4750 50  0001 L BNN "Field4"
-F 5 "MAX7219CNG" H 6650 4750 50  0001 L BNN "Field5"
-F 6 "1523914" H 6650 4750 50  0001 L BNN "Field6"
-	1    6650 4750
+P 4500 5900
+F 0 "IC1" H 4450 6870 50  0000 C CNN
+F 1 "MAX7219CNG" H 4450 6779 50  0000 C CNN
+F 2 "MAX7219CNG:DIL24-3" H 4500 5900 50  0001 L BNN
+F 3 "" H 4500 5900 50  0001 L BNN
+F 4 "MAXIM" H 4500 5900 50  0001 L BNN "Field4"
+F 5 "MAX7219CNG" H 4500 5900 50  0001 L BNN "Field5"
+F 6 "1523914" H 4500 5900 50  0001 L BNN "Field6"
+	1    4500 5900
 	1    0    0    -1  
 $EndComp
 $Comp
 L SparkFun-Switches:MOMENTARY-SWITCH-SPST-PTH-6.0MM SWT1
 U 1 1 5EF2C6CB
-P 7850 1200
-F 0 "SWT1" H 7850 1400 45  0000 C CNN
-F 1 "MOMENTARY-SWITCH-SPST-PTH-6.0MM" H 7850 1300 45  0000 C CNN
-F 2 "Switches:TACTILE_SWITCH_PTH_6.0MM" H 7850 1400 20  0001 C CNN
-F 3 "" H 7850 1200 50  0001 C CNN
-F 4 " SWCH-08441" H 7850 1331 60  0001 C CNN "Field4"
-	1    7850 1200
+P 7900 1150
+F 0 "SWT1" H 7900 1350 45  0000 C CNN
+F 1 "MOMENTARY-SWITCH-SPST-PTH-6.0MM" H 7900 1250 45  0000 C CNN
+F 2 "Switches:TACTILE_SWITCH_PTH_6.0MM" H 7900 1350 20  0001 C CNN
+F 3 "" H 7900 1150 50  0001 C CNN
+F 4 " SWCH-08441" H 7900 1281 60  0001 C CNN "Field4"
+	1    7900 1150
 	1    0    0    -1  
 $EndComp
-$Comp
-L SparkFun-Switches:MOMENTARY-SWITCH-SPST-PTH-6.0MM SWT2
-U 1 1 5EF2B4B4
-P 7850 1600
-F 0 "SWT2" H 7850 1800 45  0000 C CNN
-F 1 "MOMENTARY-SWITCH-SPST-PTH-6.0MM" H 7800 1700 45  0000 C CNN
-F 2 "Switches:TACTILE_SWITCH_PTH_6.0MM" H 7850 1800 20  0001 C CNN
-F 3 "" H 7850 1600 50  0001 C CNN
-F 4 " SWCH-08441" H 7850 1731 60  0001 C CNN "Field4"
-	1    7850 1600
-	1    0    0    -1  
-$EndComp
-NoConn ~ 7150 4250
-NoConn ~ 7150 4350
-NoConn ~ 7150 4450
-NoConn ~ 7150 4550
-NoConn ~ 7150 4650
-NoConn ~ 7150 4750
-NoConn ~ 6050 4550
-NoConn ~ 9800 4250
-Text GLabel 8900 4550 0    50   Input ~ 0
+NoConn ~ 5000 5400
+NoConn ~ 5000 5500
+NoConn ~ 5000 5600
+NoConn ~ 5000 5700
+NoConn ~ 5000 5800
+NoConn ~ 5000 5900
+NoConn ~ 3900 5700
+NoConn ~ 6800 4050
+Text GLabel 5900 4350 0    50   Input ~ 0
 GND
-Text GLabel 8900 4450 0    50   Input ~ 0
+Text GLabel 5900 4250 0    50   Input ~ 0
 GND
 Text GLabel 6500 850  2    50   Input ~ 0
 GND
-Text GLabel 9800 4350 2    50   Input ~ 0
+Text GLabel 6800 4150 2    50   Input ~ 0
 GND
 $Comp
 L SparkFun-Capacitors:10UF-0805-10V-10% C2
 U 1 1 5EFC02C0
-P 7500 2650
-F 0 "C2" H 7608 2742 45  0000 L CNN
-F 1 "10uF" H 7608 2658 45  0000 L CNN
-F 2 "shik:CAP-PTH-2.54" H 7500 2900 20  0001 C CNN
-F 3 "" H 7500 2650 50  0001 C CNN
-F 4 "CAP-11330" H 7608 2616 60  0001 L CNN "Field4"
-	1    7500 2650
+P 9500 1250
+F 0 "C2" H 9608 1342 45  0000 L CNN
+F 1 "10uF" H 9608 1258 45  0000 L CNN
+F 2 "shik:CAP-PTH-2.54" H 9500 1500 20  0001 C CNN
+F 3 "" H 9500 1250 50  0001 C CNN
+F 4 "CAP-11330" H 9608 1216 60  0001 L CNN "Field4"
+	1    9500 1250
 	1    0    0    -1  
 $EndComp
-Text GLabel 7500 2450 0    50   Input ~ 0
+Text GLabel 9500 1050 0    50   Input ~ 0
 VCC
-Text GLabel 7500 2750 2    50   Input ~ 0
+Text GLabel 9500 1350 2    50   Input ~ 0
 GND
-Text GLabel 9800 4550 2    50   Input ~ 0
+Text GLabel 6800 4350 2    50   Input ~ 0
 VCC
-Text GLabel 9800 5350 2    50   Input ~ 0
+Text GLabel 6800 5150 2    50   Input ~ 0
 CS
-Text GLabel 9800 5050 2    50   Input ~ 0
+Text GLabel 6800 4850 2    50   Input ~ 0
 CLK
 $Comp
-L SparkFun-Boards:SPARKFUN_PRO_MICRO B1
+L Shik-Tech:ARDUINO_PRO_MICRO B1
 U 1 1 5EF23EA2
-P 9350 4800
-F 0 "B1" H 9350 5650 45  0000 C CNN
-F 1 "ARDUINO_PRO_MICRO_5V" H 9350 5550 45  0000 C CNN
-F 2 "shik:SPARKFUN_PRO_MICRO" H 9350 5600 20  0001 C CNN
-F 3 "" H 9350 4800 50  0001 C CNN
-F 4 "XXX-00000" H 9350 5531 60  0001 C CNN "Field4"
-	1    9350 4800
+P 6350 4600
+F 0 "B1" H 6350 5450 45  0000 C CNN
+F 1 "ARDUINO_PRO_MICRO_5V" H 6350 5350 45  0000 C CNN
+F 2 "shik:ARDUINO_PRO_MICRO" H 6350 5400 20  0001 C CNN
+F 3 "" H 6350 4600 50  0001 C CNN
+F 4 "XXX-00000" H 6350 5331 60  0001 C CNN "Field4"
+	1    6350 4600
 	1    0    0    -1  
 $EndComp
-NoConn ~ 9800 4450
-NoConn ~ 8900 4350
 Text GLabel 6500 2050 2    50   Input ~ 0
 GND
 $Comp
 L SparkFun-Capacitors:10UF-0805-10V-10% C1
 U 1 1 5EFC8B7E
-P 8000 2650
-F 0 "C1" H 8108 2742 45  0000 L CNN
-F 1 "100nF" H 8108 2658 45  0000 L CNN
-F 2 "shik:CAP-PTH-2.54" H 8000 2900 20  0001 C CNN
-F 3 "" H 8000 2650 50  0001 C CNN
-F 4 "CAP-11330" H 8108 2616 60  0001 L CNN "Field4"
-	1    8000 2650
+P 10000 1250
+F 0 "C1" H 10108 1342 45  0000 L CNN
+F 1 "100nF" H 10108 1258 45  0000 L CNN
+F 2 "shik:CAP-PTH-2.54" H 10000 1500 20  0001 C CNN
+F 3 "" H 10000 1250 50  0001 C CNN
+F 4 "CAP-11330" H 10108 1216 60  0001 L CNN "Field4"
+	1    10000 1250
 	1    0    0    -1  
 $EndComp
-Text GLabel 8000 2450 0    50   Input ~ 0
+Text GLabel 10000 1050 0    50   Input ~ 0
 VCC
-Text GLabel 8000 2750 2    50   Input ~ 0
+Text GLabel 10000 1350 2    50   Input ~ 0
 GND
-Text GLabel 8750 2600 3    50   Input ~ 0
+Text GLabel 9550 1750 3    50   Input ~ 0
 VCC
 $Comp
 L power:PWR_FLAG #FLG0101
 U 1 1 5F293BD6
-P 8750 2600
-F 0 "#FLG0101" H 8750 2675 50  0001 C CNN
-F 1 "PWR_FLAG" H 8750 2773 50  0000 C CNN
-F 2 "" H 8750 2600 50  0001 C CNN
-F 3 "~" H 8750 2600 50  0001 C CNN
-	1    8750 2600
+P 9550 1750
+F 0 "#FLG0101" H 9550 1825 50  0001 C CNN
+F 1 "PWR_FLAG" H 9550 1923 50  0000 C CNN
+F 2 "" H 9550 1750 50  0001 C CNN
+F 3 "~" H 9550 1750 50  0001 C CNN
+	1    9550 1750
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:PWR_FLAG #FLG0102
 U 1 1 5F29B2B9
-P 9150 2600
-F 0 "#FLG0102" H 9150 2675 50  0001 C CNN
-F 1 "PWR_FLAG" H 9150 2773 50  0000 C CNN
-F 2 "" H 9150 2600 50  0001 C CNN
-F 3 "~" H 9150 2600 50  0001 C CNN
-	1    9150 2600
+P 9950 1750
+F 0 "#FLG0102" H 9950 1825 50  0001 C CNN
+F 1 "PWR_FLAG" H 9950 1923 50  0000 C CNN
+F 2 "" H 9950 1750 50  0001 C CNN
+F 3 "~" H 9950 1750 50  0001 C CNN
+	1    9950 1750
 	1    0    0    -1  
 $EndComp
-Text GLabel 9150 2600 3    50   Input ~ 0
+Text GLabel 9950 1750 3    50   Input ~ 0
 GND
 $Comp
 L N32B-rescue:POTENTIOMETER_DUAL-PTH-12MM-1_20W-20%-SparkFun-Resistors VR2
@@ -919,7 +901,7 @@ Text GLabel 4500 3050 3    50   Input ~ 0
 R16
 Text GLabel 4400 3050 3    50   Input ~ 0
 R8
-NoConn ~ 9800 5150
+NoConn ~ 6800 4950
 Text GLabel 5300 1850 3    50   Input ~ 0
 R4
 Text GLabel 4900 1850 3    50   Input ~ 0
@@ -946,130 +928,277 @@ Text GLabel 4400 1850 3    50   Input ~ 0
 R28
 Text GLabel 5900 1850 3    50   Input ~ 0
 R1
-$Comp
-L Connector:AudioJack4 J1
-U 1 1 5F013BAA
-P 9950 1400
-F 0 "J1" H 9907 1725 50  0000 C CNN
-F 1 "AudioJack4" H 9907 1634 50  0000 C CNN
-F 2 "shik:Jack_3.5mm_Horizontal" H 9950 1400 50  0001 C CNN
-F 3 "~" H 9950 1400 50  0001 C CNN
-	1    9950 1400
-	1    0    0    -1  
-$EndComp
-Text GLabel 10550 1300 2    50   Input ~ 0
-GND
-Text GLabel 8900 4250 0    50   Input ~ 0
+Text GLabel 5900 4050 0    50   Input ~ 0
 TX0
-Text GLabel 10800 1500 2    50   Input ~ 0
-VCC
-Text GLabel 10800 1800 2    50   Input ~ 0
-TX0
-$Comp
-L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R2
-U 1 1 5F046775
-P 10600 1800
-F 0 "R2" H 10600 1900 45  0000 C CNN
-F 1 "220" H 10600 1700 45  0000 C CNN
-F 2 "Resistors:AXIAL-0.3-KIT" H 10600 1950 20  0001 C CNN
-F 3 "" H 10600 1800 60  0001 C CNN
-F 4 "RES-09435" H 10600 1600 60  0001 C CNN "Field4"
-	1    10600 1800
-	1    0    0    -1  
-$EndComp
-$Comp
-L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R1
-U 1 1 5F048218
-P 10600 1500
-F 0 "R1" H 10600 1600 45  0000 C CNN
-F 1 "220" H 10600 1400 45  0000 C CNN
-F 2 "Resistors:AXIAL-0.3-KIT" H 10600 1650 20  0001 C CNN
-F 3 "" H 10600 1500 60  0001 C CNN
-F 4 "RES-09435" H 10600 1300 60  0001 C CNN "Field4"
-	1    10600 1500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	10150 1300 10250 1300
-Wire Wire Line
-	10150 1400 10250 1400
-Wire Wire Line
-	10250 1400 10250 1300
-Connection ~ 10250 1300
-Wire Wire Line
-	10250 1300 10550 1300
-Wire Wire Line
-	10400 1500 10150 1500
-Wire Wire Line
-	10150 1600 10400 1600
-Wire Wire Line
-	10400 1600 10400 1800
-NoConn ~ 9800 4850
-NoConn ~ 9800 4950
+NoConn ~ 6800 4650
+NoConn ~ 6800 4750
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 5F2EC60A
-P 10150 2550
-F 0 "H1" H 10250 2596 50  0000 L CNN
-F 1 "MountingHole" H 10250 2505 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 2550 50  0001 C CNN
-F 3 "~" H 10150 2550 50  0001 C CNN
-	1    10150 2550
+P 9300 2450
+F 0 "H1" H 9400 2496 50  0000 L CNN
+F 1 "MountingHole" H 9400 2405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 9300 2450 50  0001 C CNN
+F 3 "~" H 9300 2450 50  0001 C CNN
+	1    9300 2450
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 5F2ECB60
-P 10150 2700
-F 0 "H2" H 10250 2746 50  0000 L CNN
-F 1 "MountingHole" H 10250 2655 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 2700 50  0001 C CNN
-F 3 "~" H 10150 2700 50  0001 C CNN
-	1    10150 2700
+P 9300 2650
+F 0 "H2" H 9400 2696 50  0000 L CNN
+F 1 "MountingHole" H 9400 2605 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 9300 2650 50  0001 C CNN
+F 3 "~" H 9300 2650 50  0001 C CNN
+	1    9300 2650
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H3
 U 1 1 5F2EDFFC
-P 10150 2850
-F 0 "H3" H 10250 2896 50  0000 L CNN
-F 1 "MountingHole" H 10250 2805 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 2850 50  0001 C CNN
-F 3 "~" H 10150 2850 50  0001 C CNN
-	1    10150 2850
+P 9300 2850
+F 0 "H3" H 9400 2896 50  0000 L CNN
+F 1 "MountingHole" H 9400 2805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 9300 2850 50  0001 C CNN
+F 3 "~" H 9300 2850 50  0001 C CNN
+	1    9300 2850
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H4
 U 1 1 5F2EE398
-P 10150 3000
-F 0 "H4" H 10250 3046 50  0000 L CNN
-F 1 "MountingHole" H 10250 2955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 3000 50  0001 C CNN
-F 3 "~" H 10150 3000 50  0001 C CNN
-	1    10150 3000
+P 10100 2450
+F 0 "H4" H 10200 2496 50  0000 L CNN
+F 1 "MountingHole" H 10200 2405 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 10100 2450 50  0001 C CNN
+F 3 "~" H 10100 2450 50  0001 C CNN
+	1    10100 2450
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H5
 U 1 1 5F480092
-P 10150 3150
-F 0 "H5" H 10250 3196 50  0000 L CNN
-F 1 "MountingHole" H 10250 3105 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 3150 50  0001 C CNN
-F 3 "~" H 10150 3150 50  0001 C CNN
-	1    10150 3150
+P 10100 2650
+F 0 "H5" H 10200 2696 50  0000 L CNN
+F 1 "MountingHole" H 10200 2605 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 10100 2650 50  0001 C CNN
+F 3 "~" H 10100 2650 50  0001 C CNN
+	1    10100 2650
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H6
 U 1 1 5F480098
-P 10150 3300
-F 0 "H6" H 10250 3346 50  0000 L CNN
-F 1 "MountingHole" H 10250 3255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.2mm_M3" H 10150 3300 50  0001 C CNN
-F 3 "~" H 10150 3300 50  0001 C CNN
-	1    10150 3300
+P 10100 2850
+F 0 "H6" H 10200 2896 50  0000 L CNN
+F 1 "MountingHole" H 10200 2805 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 10100 2850 50  0001 C CNN
+F 3 "~" H 10100 2850 50  0001 C CNN
+	1    10100 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AudioJack4 J1
+U 1 1 5F013BAA
+P 7800 4200
+F 0 "J1" H 7757 4525 50  0000 C CNN
+F 1 "AudioJack4" H 7757 4434 50  0000 C CNN
+F 2 "shik:Jack_3.5mm_Horizontal" H 7800 4200 50  0001 C CNN
+F 3 "~" H 7800 4200 50  0001 C CNN
+	1    7800 4200
+	1    0    0    -1  
+$EndComp
+Text GLabel 8650 4100 2    50   Input ~ 0
+GND
+Text GLabel 8650 4300 2    50   Input ~ 0
+VCC
+Text GLabel 8650 4600 2    50   Input ~ 0
+TX0
+$Comp
+L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R2
+U 1 1 5F046775
+P 8450 4600
+F 0 "R2" H 8450 4700 45  0000 C CNN
+F 1 "220" H 8450 4500 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 8450 4750 20  0001 C CNN
+F 3 "" H 8450 4600 60  0001 C CNN
+F 4 "RES-09435" H 8450 4400 60  0001 C CNN "Field4"
+	1    8450 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R1
+U 1 1 5F048218
+P 8450 4300
+F 0 "R1" H 8450 4400 45  0000 C CNN
+F 1 "220" H 8450 4200 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 8450 4450 20  0001 C CNN
+F 3 "" H 8450 4300 60  0001 C CNN
+F 4 "RES-09435" H 8450 4100 60  0001 C CNN "Field4"
+	1    8450 4300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 4100 8100 4100
+Wire Wire Line
+	8000 4200 8100 4200
+Wire Wire Line
+	8100 4200 8100 4100
+Wire Wire Line
+	8250 4300 8000 4300
+Wire Wire Line
+	8000 4400 8250 4400
+Wire Wire Line
+	8250 4400 8250 4600
+$Comp
+L Connector:AudioJack4 J2
+U 1 1 5F5CDF9B
+P 7800 5200
+F 0 "J2" H 7757 5525 50  0000 C CNN
+F 1 "AudioJack4" H 7757 5434 50  0000 C CNN
+F 2 "shik:Jack_3.5mm_Horizontal" H 7800 5200 50  0001 C CNN
+F 3 "~" H 7800 5200 50  0001 C CNN
+	1    7800 5200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 4100 8650 4100
+Connection ~ 8100 4100
+Text GLabel 5900 4150 0    50   Input ~ 0
+RX
+$Comp
+L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R4
+U 1 1 5F5F2266
+P 9350 5900
+F 0 "R4" H 9350 6000 45  0000 C CNN
+F 1 "4.7k" H 9350 5800 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 9350 6050 20  0001 C CNN
+F 3 "" H 9350 5900 60  0001 C CNN
+F 4 "RES-09435" H 9350 5700 60  0001 C CNN "Field4"
+	1    9350 5900
+	0    1    1    0   
+$EndComp
+$Comp
+L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R5
+U 1 1 5F5F2F57
+P 9500 5350
+F 0 "R5" H 9500 5450 45  0000 C CNN
+F 1 "220" H 9500 5250 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 9500 5500 20  0001 C CNN
+F 3 "" H 9500 5350 60  0001 C CNN
+F 4 "RES-09435" H 9500 5150 60  0001 C CNN "Field4"
+	1    9500 5350
+	0    1    1    0   
+$EndComp
+$Comp
+L SparkFun-Resistors:10KOHM-HORIZ_KIT-1_4W-5% R3
+U 1 1 5F5F341E
+P 8200 5300
+F 0 "R3" H 8200 5400 45  0000 C CNN
+F 1 "220" H 8200 5200 45  0000 C CNN
+F 2 "Resistors:AXIAL-0.3-KIT" H 8200 5450 20  0001 C CNN
+F 3 "" H 8200 5300 60  0001 C CNN
+F 4 "RES-09435" H 8200 5100 60  0001 C CNN "Field4"
+	1    8200 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 5300 8400 5300
+Wire Wire Line
+	8650 5350 8650 5300
+Wire Wire Line
+	8650 5600 8400 5600
+Wire Wire Line
+	8650 5550 8650 5600
+$Comp
+L Diode:1N914 D1
+U 1 1 5F5F4A1D
+P 8400 5450
+F 0 "D1" H 8400 5666 50  0000 C CNN
+F 1 "1N914" H 8400 5575 50  0000 C CNN
+F 2 "shik:D_DO-35_SOD27_P7.62mm_Horizontal" H 8400 5275 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/85622/1n914.pdf" H 8400 5450 50  0001 C CNN
+	1    8400 5450
+	0    1    1    0   
+$EndComp
+$Comp
+L Isolator:6N138 U1
+U 1 1 5F5F0004
+P 8950 5450
+F 0 "U1" H 8950 5917 50  0000 C CNN
+F 1 "6N138" H 8950 5826 50  0000 C CNN
+F 2 "shik:6n138" H 9240 5150 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub/Collateral/HCPL2731-D.pdf" H 9240 5150 50  0001 C CNN
+	1    8950 5450
+	1    0    0    -1  
+$EndComp
+Connection ~ 8400 5300
+Wire Wire Line
+	8000 5400 8000 5600
+Wire Wire Line
+	8000 5600 8400 5600
+Connection ~ 8400 5600
+Text GLabel 9550 5550 2    50   Input ~ 0
+RX
+Text GLabel 9550 5150 2    50   Input ~ 0
+VCC
+Wire Wire Line
+	9250 5250 9250 5150
+Wire Wire Line
+	9250 5150 9500 5150
+Wire Wire Line
+	9250 5550 9500 5550
+Wire Wire Line
+	9250 5350 9350 5350
+Wire Wire Line
+	9350 5350 9350 5700
+Text GLabel 9550 5650 2    50   Input ~ 0
+GND
+Wire Wire Line
+	9250 5650 9550 5650
+Wire Wire Line
+	9500 5550 9550 5550
+Connection ~ 9500 5550
+Wire Wire Line
+	9500 5150 9550 5150
+Connection ~ 9500 5150
+NoConn ~ 8000 5100
+NoConn ~ 8000 5200
+$Comp
+L SparkFun-Switches:MOMENTARY-SWITCH-SPST-PTH-6.0MM SWT2
+U 1 1 5EF2B4B4
+P 7900 1600
+F 0 "SWT2" H 7900 1800 45  0000 C CNN
+F 1 "MOMENTARY-SWITCH-SPST-PTH-6.0MM" H 7850 1700 45  0000 C CNN
+F 2 "Switches:TACTILE_SWITCH_PTH_6.0MM" H 7900 1800 20  0001 C CNN
+F 3 "" H 7900 1600 50  0001 C CNN
+F 4 " SWCH-08441" H 7900 1731 60  0001 C CNN "Field4"
+	1    7900 1600
+	1    0    0    -1  
+$EndComp
+Text GLabel 7700 1600 0    50   Input ~ 0
+SWT2
+Text GLabel 8100 1600 2    50   Input ~ 0
+GND
+Text GLabel 8100 2050 2    50   Input ~ 0
+GND
+Text GLabel 7700 2050 0    50   Input ~ 0
+RST
+Text GLabel 6800 4250 2    50   Input ~ 0
+RST
+Text GLabel 9350 6100 3    50   Input ~ 0
+GND
+$Comp
+L SparkFun-Switches:MOMENTARY-SWITCH-SPST-PTH-6.0MM RESET1
+U 1 1 5F638DC4
+P 7900 2050
+F 0 "RESET1" H 7900 2250 45  0000 C CNN
+F 1 "MOMENTARY-SWITCH-SPST-PTH-6.0MM" H 7850 2150 45  0000 C CNN
+F 2 "Switches:TACTILE_SWITCH_PTH_6.0MM" H 7900 2250 20  0001 C CNN
+F 3 "" H 7900 2050 50  0001 C CNN
+F 4 " SWCH-08441" H 7900 2181 60  0001 C CNN "Field4"
+	1    7900 2050
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
