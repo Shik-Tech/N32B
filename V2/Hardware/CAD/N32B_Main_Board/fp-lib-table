@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name N32B)(type KiCad)(uri "/Users/shiko/Documents/Shik.Tech/N32B/Hardware/Top panel graphics")(options "")(descr ""))
+  (lib (name Mods)(type KiCad)(uri /Users/shiko/Documents/Shik.Tech/Products/N32B/N32B-v1.3/Hardware/CAD/mods)(options "")(descr ""))
+)
