@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name N32B-rescue)(type Legacy)(uri ${KIPRJMOD}/N32B-rescue.lib)(options "")(descr ""))
-)

@@ -239,7 +239,7 @@ dPairViaGap=0.25
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=/Users/shiko/Documents/Shik.Tech/Open Source Projects/N32B/Hardware/
+PlotDirectoryName=Hardware/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
