@@ -26,7 +26,7 @@ public:
     }
 
     // Render current channel or preset
-    void renderDisplay(Preset_t activePreset, uint8_t readInterval = 1500)
+    void renderDisplay(Preset_t activePreset, uint16_t readInterval = 1500)
     {
         if (millis() - channelDisplayTimeElapsed >= readInterval)
         {
@@ -41,48 +41,14 @@ public:
         }
     }
 
-    // Startup animation (n32b)
-    void startupAnimation()
-    {
-        uint8_t delayTime = 200;
-        uint8_t repeats = 1;
-
-        for (int i = 0; i < repeats; i++)
-        {
-            display.clear();
-            delay(delayTime + 200);
-
-            // _n
-            display.write(1, B00010101);
-            delay(delayTime);
-            display.clear();
-
-            // n3
-            display.write(1, B01111001);
-            display.write(2, B00010101);
-            delay(delayTime);
-            display.clear();
-
-            // 32
-            display.write(1, B01101101);
-            display.write(2, B01111001);
-            delay(delayTime);
-            display.clear();
-
-            // 2b
-            display.write(1, B00011111);
-            display.write(2, B01101101);
-            delay(delayTime);
-            display.clear();
-
-            // b_
-            display.write(2, B00011111);
-            delay(delayTime);
-            display.clear();
-
-            delay(delayTime + 500);
-        }
-    }
+    // void displayCurrentValue(uint16_t value) {
+    //     uint8_t mappedValue = map(value, 0, 1023, 0, 99);
+    //     if (mappedValue < 10) {
+    //         display.clear();
+    //     }
+    //     display.printDigit(mappedValue);
+    //     channelDisplayTimeElapsed = millis();
+    // }
 
     // Display the currnet knob value as a square
     void valueAnimation(uint16_t value)

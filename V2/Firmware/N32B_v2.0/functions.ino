@@ -37,9 +37,10 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
     }
 
     n32b_display.valueAnimation(toSend);
+    // n32b_display.displayCurrentValue(toSend);
 
     // Fill the emission buffers
-    for (uint8_t i = 2; i > 0; i--)
+    for (uint8_t i = 1; i > 0; i--)
     {
       emittedValue[i][index] = emittedValue[i - 1][index];
     }
@@ -51,8 +52,8 @@ void sendCCMessage(byte MSB, byte LSB, uint16_t value, byte channel)
 {
   if (activePreset.highResolution)
   {
-    unsigned int mappedValue = map(value, 0, 1023, 0, 16383);
-    unsigned int shiftedValue = mappedValue << 1;
+    unsigned int shiftedValue = map(value, 0, 1023, 0, 16383) << 1;
+
     MIDICoreSerial.sendControlChange(MSB, highByte(shiftedValue), channel);
     MIDICoreSerial.sendControlChange(LSB, lowByte(shiftedValue) >> 1, channel);
 
@@ -70,8 +71,7 @@ void sendCCMessage(byte MSB, byte LSB, uint16_t value, byte channel)
 void sendNRPM(uint8_t NRPNNumberMSB, uint8_t NRPNNumberLSB, int16_t value, uint8_t channel)
 {
 
-  unsigned int mappedValue = map(value, 0, 1023, 0, 16383);
-  unsigned int shiftedValue = mappedValue << 1;
+  unsigned int shiftedValue = map(value, 0, 1023, 0, 16383) << 1;
 
   MIDICoreSerial.sendControlChange(98, NRPNNumberLSB & 0x7F, channel); // NRPN LSB
   MIDICoreUSB.sendControlChange(98, NRPNNumberLSB & 0x7F, channel);    // NRPN LSB
@@ -135,11 +135,11 @@ void buttonReleaseAction(bool direction)
 {
   if (direction)
   {
-    isPressingAButton = false;
+    isPressingAButton == false;
   }
   else
   {
-    isPressingBButton = false;
+    isPressingBButton == false;
   }
 
   if (millis() - pressedTime < SHORT_PRESS_TIME)
@@ -174,13 +174,13 @@ void renderFunctionButton()
 
   if (buttonA.isPressed())
   {
-    isPressingAButton = true;
+    isPressingAButton == true;
     buttonPressAction(1);
   }
 
   if (buttonB.isPressed())
   {
-    isPressingBButton = true;
+    isPressingBButton == true;
     buttonPressAction(0);
   }
 
@@ -199,11 +199,51 @@ void renderFunctionButton()
   {
     if (isPressingAButton)
     {
-      isPresetMode = false;
+      isPresetMode == false;
     }
     if (isPressingBButton)
     {
-      isPresetMode = true;
+      isPresetMode == true;
     }
   }
+}
+
+void doMidiRead()
+{
+  MIDICoreSerial.read();
+  MIDICoreUSB.read();
+}
+
+// Updates the buffers and samples the analog pin
+// void updateKnob(uint8_t index)
+// {
+//   for (uint8_t i = 3; i > 0; i--)
+//   {
+//     knobBuffer[i][index] = knobBuffer[i - 1][index];
+//   }
+//   knobBuffer[0][index] = mux.read(index);
+// }
+
+// Returns average of previous knob reads
+
+// void updateKnobs() {
+//   for (uint8_t currentKnob = 0; currentKnob < NUMBER_OF_KNOBS; currentKnob++)
+//   {
+//     doMidiRead();                             // Read
+//     // updateKnob(currentKnob);                  // Update buffers
+//     doMidiRead();                             // Read
+//     interpretKnob(currentKnob, false, false); // Send
+//   }
+// }
+
+uint16_t getKnobValue(uint8_t index)
+{
+  uint16_t average = 0;
+  for (byte i = 0; i < 4; i++)
+  {
+    average += knobBuffer[i][index];
+  }
+  average /= 4;
+
+  return average;
 }

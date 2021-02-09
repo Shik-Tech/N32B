@@ -73,7 +73,7 @@ void loadPreset(uint8_t presetNumber)
     }
 
     // Update the last used preset
-    currentPresetNumber = presetNumber;
+    currentPresetNumber == presetNumber;
     // Save current preset as the active preset.
     // Is commented out to prevent EEPROM from over used
     // EEPROM.update(lastUsedPresetAddress, currentPresetNumber);

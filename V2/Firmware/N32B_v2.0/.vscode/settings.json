@@ -14,6 +14,10 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "cstddef": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ios": "cpp",
+        "functional": "cpp",
+        "typeinfo": "cpp",
+        "__bit_reference": "cpp"
     }
 }
