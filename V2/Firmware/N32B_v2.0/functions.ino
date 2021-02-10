@@ -28,15 +28,17 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
         {
           sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
         }
+        n32b_display.blinkDot(2);
       }
     }
     else
     {
       // NRPN Message
       sendNRPM(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
+      n32b_display.blinkDot(2);
     }
 
-    n32b_display.valueAnimation(toSend);
+    // n32b_display.valueAnimation(toSend);
     // n32b_display.displayCurrentValue(toSend);
 
     // Fill the emission buffers
@@ -107,6 +109,7 @@ void changeChannel(bool direction)
     else
       activePreset.channel = 16;
   }
+  n32b_display.showChannelNumber(activePreset.channel);
 }
 
 void changePreset(bool direction)
@@ -127,8 +130,10 @@ void changePreset(bool direction)
     else
       loadPreset(4);
   }
-  MIDICoreSerial.sendProgramChange(currentPresetNumber, 1);
-  MIDICoreUSB.sendProgramChange(currentPresetNumber, 1);
+  // MIDICoreSerial.sendProgramChange(currentPresetNumber, 1);
+  // MIDICoreUSB.sendProgramChange(currentPresetNumber, 1);
+
+  n32b_display.showPresetNumber(currentPresetNumber);
 }
 
 void buttonReleaseAction(bool direction)

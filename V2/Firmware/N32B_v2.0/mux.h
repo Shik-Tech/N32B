@@ -1,10 +1,10 @@
-#ifndef MUX74HC4067_h
-#define MUX74HC4067_h
+#ifndef MUX_h
+#define MUX_h
 
-class MUX74HC4067
+class MUX
 {
 public:
-    MUX74HC4067() {}
+    MUX() {}
     void init(uint8_t channel1, uint8_t channel2, uint8_t channel3, int8_t channel4)
     {
         channels[0] = channel1;
@@ -29,18 +29,10 @@ public:
     {
         if (millis() - timeout >= 1)
         {
-            readMux(doMidiRead);
+            read(doMidiRead);
             timeout = millis();
         }
     }
-    // uint16_t read(uint16_t knobIndex)
-    // {
-    //     if (knobIndex < NUMBER_OF_KNOBS)
-    //     {
-    //         return values[knobIndex];
-    //     }
-    //     return 0;
-    // }
 
 private:
     uint8_t currentChannel = 0;
@@ -49,7 +41,7 @@ private:
     unsigned long timeout;
 
     template<typename Callback>
-    void readMux(Callback&& doMidiRead)
+    void read(Callback&& doMidiRead)
     {
         for (uint8_t i = 0; i < 2; i++)
         {

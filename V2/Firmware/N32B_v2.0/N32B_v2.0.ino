@@ -16,11 +16,6 @@
 #include "display.h"
 #include "mux.h"
 
-N32B_DISPLAY n32b_display;
-
-/* Mux setup */
-MUX74HC4067 mux;
-
 /* Pin setup */
 #define MUX_A_SIG (const uint8_t)8
 #define MUX_B_SIG (const uint8_t)9
@@ -33,6 +28,11 @@ MUX74HC4067 mux;
 #define BUTTON_A_PIN (const uint8_t) A3
 #define BUTTON_B_PIN (const uint8_t) A2
 
+/* Mux setup */
+MUX mux;
+
+N32B_DISPLAY n32b_display;
+
 ezButton buttonA(BUTTON_A_PIN);
 ezButton buttonB(BUTTON_B_PIN);
 
@@ -43,7 +43,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, MIDICoreSerial);
 
 void setup()
 {
-  // Serial.begin(115200);
+  Serial.begin(115200);
 
   n32b_display.setBright(1);     // Set the display brightness (1-15)
   n32b_display.setDigitLimit(2); // Set amount of digits in the display
@@ -148,12 +148,14 @@ void setup()
 void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::MidiMessage &message)
 {
   MIDICoreSerial.send(message);
+  n32b_display.blinkDot(1);
 }
 
 void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
 {
   // MIDICoreUSB.send(message);
   MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
+  n32b_display.blinkDot(1);
 }
 // void onUsbMessage(const MidiMessage& message)
 // {
@@ -186,6 +188,7 @@ void loop()
     interpretKnob(currentKnob, false, false); // Send
   }
 
-  n32b_display.renderDisplay(activePreset); // Render the display
+  // n32b_display.renderDisplay(activePreset); // Render the display
+  n32b_display.updateDisplay();
   renderFunctionButton();                   // Update buttons stats
 }

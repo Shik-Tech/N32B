@@ -25,81 +25,19 @@ public:
         display.setDigitLimit(digitLimit);
     }
 
-    // Render current channel or preset
-    void renderDisplay(Preset_t activePreset, uint16_t readInterval = 1500)
-    {
-        if (millis() - channelDisplayTimeElapsed >= readInterval)
-        {
-            if (!isPresetMode)
-            {
-                showCurrentChannel();
-            }
-            else
-            {
-                showCurrentPreset();
-            }
+    // Auto clear the display
+    void updateDisplay(uint8_t readInterval = 255) {
+        if(millis() - displayOffTimer >= readInterval) {
+            display.clear();
         }
     }
 
-    // void displayCurrentValue(uint16_t value) {
-    //     uint8_t mappedValue = map(value, 0, 1023, 0, 99);
-    //     if (mappedValue < 10) {
-    //         display.clear();
-    //     }
-    //     display.printDigit(mappedValue);
-    //     channelDisplayTimeElapsed = millis();
-    // }
-
-    // Display the currnet knob value as a square
-    void valueAnimation(uint16_t value)
-    {
-        display.clear();
-        uint8_t mappedValue = map(value, 0, 1023, 0, 9);
-
-        // Full circle animation
-        switch (mappedValue)
-        {
-        case 0:
+    // Blink the decimal points
+    void blinkDot(uint8_t dotSide, uint8_t readInterval = 255) {
+        if(millis() - displayOffTimer >= readInterval) {
             display.clear();
-            break;
-        case 1:
-            display.write(2, B10000000);
-            display.write(1, B00000000);
-            break;
-        case 2:
-            display.write(2, B10001000);
-            display.write(1, B00000000);
-            break;
-        case 3:
-            display.write(2, B10001100);
-            display.write(1, B00000000);
-            break;
-        case 4:
-            display.write(2, B10001110);
-            display.write(1, B00000000);
-            break;
-        case 5:
-            display.write(2, B11001110);
-            display.write(1, B00000000);
-            break;
-        case 6:
-            display.write(2, B11001110);
-            display.write(1, B01000000);
-            break;
-        case 7:
-            display.write(2, B11001110);
-            display.write(1, B01100000);
-            break;
-        case 8:
-            display.write(2, B11001110);
-            display.write(1, B01110000);
-            break;
-        case 9:
-            display.write(2, B11001110);
-            display.write(1, B01111000);
-            break;
+            display.write(dotSide, B10000000);
         }
-        channelDisplayTimeElapsed = millis();
     }
 
     // Show animation after factory reset (infinity animation)
@@ -153,20 +91,15 @@ public:
         }
     }
 
-    // Show the curernt channel
-    void showCurrentChannel()
-    {
-        display.clear();
-        display.printDigit(activePreset.channel);
+    void showChannelNumber(uint8_t channelNumber) {
+        display.printDigit(channelNumber);
+        displayOffTimer = millis();
     }
 
-    // Show the curernt preset
-    void showCurrentPreset()
-    {
-        display.clear();
+    void showPresetNumber(byte presetNumber) {
         display.write(2, B01100111);
-        display.printDigit(currentPresetNumber);
-        presetDisplayTimeElapsed = millis();
+        display.printDigit(presetNumber);
+        displayOffTimer = millis();
     }
 
     // Show save message (Sv.)
@@ -175,18 +108,17 @@ public:
         display.clear();
         display.write(2, B01011011);
         display.write(1, B00011100);
-        delay(200);
+        delay(300);
         display.write(1, B10011100);
-        delay(200);
+        delay(300);
         display.write(1, B00011100);
-        delay(200);
+        delay(300);
         display.write(1, B10011100);
-        delay(200);
+        delay(300);
     }
 
 private:
-    unsigned long channelDisplayTimeElapsed;
-    unsigned long presetDisplayTimeElapsed;
+    unsigned long displayOffTimer;
 };
 
 #endif

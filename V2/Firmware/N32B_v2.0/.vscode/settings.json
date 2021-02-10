@@ -18,6 +18,7 @@
         "ios": "cpp",
         "functional": "cpp",
         "typeinfo": "cpp",
-        "__bit_reference": "cpp"
+        "__bit_reference": "cpp",
+        "ostream": "cpp"
     }
 }
