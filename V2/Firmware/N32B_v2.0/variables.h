@@ -48,7 +48,10 @@ unsigned int emittedValue[3][32];
 unsigned long pressedTime = 0;
 bool isPressingAButton = false;
 bool isPressingBButton = false;
+
+/* Mode variables */
 bool isPresetMode = false;
+bool inhibitMidi = false;
 
 bool wasFactoryReset = false;
 // byte index in EEPROM for the last used preset

@@ -40,7 +40,18 @@ public:
         }
     }
 
-    // Show animation after factory reset (infinity animation)
+    void showChannelNumber(uint8_t channelNumber) {
+        display.printDigit(channelNumber);
+        displayOffTimer = millis();
+    }
+
+    void showPresetNumber(byte presetNumber) {
+        display.write(2, B01100111);
+        display.printDigit(presetNumber);
+        displayOffTimer = millis();
+    }
+
+    // Show animation after factory reset (infinity sign animation)
     void factoryResetAnimation()
     {
         uint8_t delayTime = 100;
@@ -89,17 +100,6 @@ public:
             delay(delayTime);
             display.clear();
         }
-    }
-
-    void showChannelNumber(uint8_t channelNumber) {
-        display.printDigit(channelNumber);
-        displayOffTimer = millis();
-    }
-
-    void showPresetNumber(byte presetNumber) {
-        display.write(2, B01100111);
-        display.printDigit(presetNumber);
-        displayOffTimer = millis();
     }
 
     // Show save message (Sv.)

@@ -5,6 +5,28 @@
   Copyright (c) 2021 SHIK
 */
 
+void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::MidiMessage &message)
+{
+  MIDICoreSerial.send(message);
+  n32b_display.blinkDot(1);
+}
+
+void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
+{
+  // MIDICoreUSB.send(message);
+  MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
+  n32b_display.blinkDot(1);
+}
+// void onUsbMessage(const MidiMessage& message)
+// {
+//   MIDICoreSerial.send(message);
+// }
+
+// void onSerialMessage(const MidiMessage& message)
+// {
+//   MIDICoreUSB.send(message);
+// }
+
 void interpretKnob(uint8_t index, bool force, bool inhibit)
 {
   // Read knob value
@@ -18,7 +40,7 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
       // CC Message
       if (!inhibit)
       {
-        // Check if channel is defined for this knob
+        // Check if it is channel specific message
         uint8_t knobChannel = activePreset.knobInfo[index].CHANNEL & 0x7f;
         if (knobChannel > 0 && knobChannel < 17)
         {
@@ -146,6 +168,7 @@ void buttonReleaseAction(bool direction)
 
   if (millis() - pressedTime < SHORT_PRESS_TIME)
   {
+    inhibitMidi = true;
     if (isPresetMode)
     {
       changePreset(direction);
@@ -172,6 +195,10 @@ void buttonPressAction(bool direction)
 
 void renderFunctionButton()
 {
+  if (millis() - pressedTime > 500) {
+    inhibitMidi = false;
+  }
+
   // Must call the loop() function first
   buttonA.loop();
   buttonB.loop();

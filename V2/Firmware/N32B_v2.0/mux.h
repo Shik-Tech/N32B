@@ -1,10 +1,10 @@
-#ifndef MUX_h
-#define MUX_h
+#ifndef MUX_FACTORY_h
+#define MUX_FACTORY_h
 
-class MUX
+class MUX_FACTORY
 {
 public:
-    MUX() {}
+    MUX_FACTORY() {}
     void init(uint8_t channel1, uint8_t channel2, uint8_t channel3, int8_t channel4)
     {
         channels[0] = channel1;

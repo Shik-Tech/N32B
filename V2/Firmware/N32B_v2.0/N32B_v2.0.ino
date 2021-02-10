@@ -29,7 +29,7 @@
 #define BUTTON_B_PIN (const uint8_t) A2
 
 /* Mux setup */
-MUX mux;
+MUX_FACTORY mux;
 
 N32B_DISPLAY n32b_display;
 
@@ -145,31 +145,9 @@ void setup()
   MIDICoreUSB.sendRealTime((midi::MidiType)0xFE);
   MIDICoreSerial.sendRealTime((midi::MidiType)0xFE);
 }
-void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::MidiMessage &message)
-{
-  MIDICoreSerial.send(message);
-  n32b_display.blinkDot(1);
-}
-
-void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
-{
-  // MIDICoreUSB.send(message);
-  MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
-  n32b_display.blinkDot(1);
-}
-// void onUsbMessage(const MidiMessage& message)
-// {
-//   MIDICoreSerial.send(message);
-// }
-
-// void onSerialMessage(const MidiMessage& message)
-// {
-//   MIDICoreUSB.send(message);
-// }
 
 void loop()
 {
-
   /* Show factory reset animation */
   if (wasFactoryReset)
   {
@@ -178,17 +156,13 @@ void loop()
   }
 
   mux.update(doMidiRead);
-  // updateKnob();
-  // Iterate all knobs, read update buffers and send
+
+  // Iterate all knobs and send midi messages
   for (uint8_t currentKnob = 0; currentKnob < NUMBER_OF_KNOBS; currentKnob++)
   {
-    // doMidiRead();                             // Read
-    // updateKnob(currentKnob);                  // Update buffers
-    // doMidiRead();                             // Read
-    interpretKnob(currentKnob, false, false); // Send
+    interpretKnob(currentKnob, false, inhibitMidi);
   }
 
-  // n32b_display.renderDisplay(activePreset); // Render the display
   n32b_display.updateDisplay();
-  renderFunctionButton();                   // Update buttons stats
+  renderFunctionButton(); // Update buttons stats
 }
