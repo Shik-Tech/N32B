@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -11,7 +11,7 @@ void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::Midi
   n32b_display.blinkDot(1);
 }
 
-void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
+void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial>>::MidiMessage &message)
 {
   // MIDICoreUSB.send(message);
   MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
@@ -193,12 +193,8 @@ void buttonPressAction(bool direction)
   MIDICoreUSB.turnThruOff();
 }
 
-void renderFunctionButton()
+void renderButtonFunctions()
 {
-  if (millis() - pressedTime > 500) {
-    inhibitMidi = false;
-  }
-
   // Must call the loop() function first
   buttonA.loop();
   buttonB.loop();

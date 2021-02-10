@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -50,6 +50,7 @@ bool isPressingAButton = false;
 bool isPressingBButton = false;
 
 /* Mode variables */
+bool startUp = true;
 bool isPresetMode = false;
 bool inhibitMidi = false;
 

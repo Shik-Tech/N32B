@@ -19,6 +19,8 @@
         "functional": "cpp",
         "typeinfo": "cpp",
         "__bit_reference": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "atomic": "cpp",
+        "system_error": "cpp"
     }
 }

@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -14,22 +14,10 @@
 #include "definitions.h"
 #include "variables.h"
 #include "display.h"
-#include "mux.h"
-
-/* Pin setup */
-#define MUX_A_SIG (const uint8_t)8
-#define MUX_B_SIG (const uint8_t)9
-#define MIDI_TX_PIN (const uint8_t)1
-#define MUX_S0 (const uint8_t)2
-#define MUX_S1 (const uint8_t)3
-#define MUX_S2 (const uint8_t)4
-#define MUX_S3 (const uint8_t)5
-#define LED_PIN (const uint8_t)17
-#define BUTTON_A_PIN (const uint8_t) A3
-#define BUTTON_B_PIN (const uint8_t) A2
+#include "mux_factory.h"
 
 /* Mux setup */
-MUX_FACTORY mux;
+MUX_FACTORY muxFactory;
 
 N32B_DISPLAY n32b_display;
 
@@ -48,9 +36,9 @@ void setup()
   n32b_display.setBright(1);     // Set the display brightness (1-15)
   n32b_display.setDigitLimit(2); // Set amount of digits in the display
 
-  mux.init(MUX_S0, MUX_S1, MUX_S2, MUX_S3);
-  mux.setSignalPin(0, MUX_A_SIG);
-  mux.setSignalPin(1, MUX_B_SIG);
+  muxFactory.init(MUX_S0, MUX_S1, MUX_S2, MUX_S3);
+  muxFactory.setSignalPin(0, MUX_A_SIG);
+  muxFactory.setSignalPin(1, MUX_B_SIG);
 
   /* Pin setup */
   pinMode(MIDI_TX_PIN, OUTPUT);
@@ -154,8 +142,14 @@ void loop()
     n32b_display.factoryResetAnimation();
     wasFactoryReset = false;
   }
+  if (startUp)
+  {
+    n32b_display.showStartUpAnimation();
+    n32b_display.showChannelNumber(activePreset.channel);
+    startUp = false;
+  }
 
-  mux.update(doMidiRead);
+  muxFactory.update(doMidiRead);
 
   // Iterate all knobs and send midi messages
   for (uint8_t currentKnob = 0; currentKnob < NUMBER_OF_KNOBS; currentKnob++)
@@ -164,5 +158,12 @@ void loop()
   }
 
   n32b_display.updateDisplay();
-  renderFunctionButton(); // Update buttons stats
+  renderButtonFunctions(); // Update buttons stats
+
+  // Inhibit sending messages while changing channel
+  // This will prevent unchanged values from being fired
+  if (millis() - pressedTime > 500)
+  {
+    inhibitMidi = false;
+  }
 }

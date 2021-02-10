@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -9,8 +9,20 @@
  * Definitions of constats
  */
 
-#ifndef INC_GUARD_DEFINITIONS
-#define INC_GUARD_DEFINITIONS
+#ifndef N32B_DEFINITIONS
+#define N32B_DEFINITIONS
+
+/* Pin setup */
+#define MUX_A_SIG (const uint8_t)8
+#define MUX_B_SIG (const uint8_t)9
+#define MIDI_TX_PIN (const uint8_t)1
+#define MUX_S0 (const uint8_t)2
+#define MUX_S1 (const uint8_t)3
+#define MUX_S2 (const uint8_t)4
+#define MUX_S3 (const uint8_t)5
+#define LED_PIN (const uint8_t)17
+#define BUTTON_A_PIN (const uint8_t) A3
+#define BUTTON_B_PIN (const uint8_t) A2
 
 // Reset to factory preset timeout
 #define reset_timeout (unsigned int)4000
@@ -29,11 +41,11 @@
 #define MANUFACTURER (const uint8_t)1
 #define COMMAND (const uint8_t)2
 #define KNOB_INDEX (const uint8_t)3
-#define MSB_VALUE (const uint8_t)4
-#define LSB_VALUE (const uint8_t)5
-#define CHANNEL_VALUE (const uint8_t)6
-#define MIN_VALUE (const uint8_t)7
-#define MAX_VALUE (const uint8_t)8
+#define MSB_INDEX (const uint8_t)4
+#define LSB_INDEX (const uint8_t)5
+#define CHANNEL_INDEX (const uint8_t)6
+#define MIN_VALUE_INDEX (const uint8_t)7
+#define MAX_VALUE_INDEX (const uint8_t)8
 
 #define SET_KNOB_AS_CC (const uint8_t)1         // CC
 #define SET_KNOB_AS_CC_CHANNEL (const uint8_t)2 // CC & Channel

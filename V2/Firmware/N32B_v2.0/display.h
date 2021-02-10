@@ -1,5 +1,5 @@
 /*
-    N32B Firmware v2.0
+    N32B Firmware v2.1
     MIT License
 
     Copyright (c) 2021 SHIK
@@ -51,13 +51,37 @@ public:
         displayOffTimer = millis();
     }
 
+    void showStartUpAnimation() {
+        uint8_t delayTime = 175;
+        uint8_t repeats = 3;
+
+        for (uint8_t i = 0; i < repeats; i++) {
+            display.clear();
+
+            display.write(1, B00001000);
+            display.write(2, B00001000);
+            delay(delayTime);
+            display.clear();
+
+            display.write(1, B00000001);
+            display.write(2, B00000001);
+            delay(delayTime);
+            display.clear();
+
+            display.write(1, B01000000);
+            display.write(2, B01000000);
+            delay(delayTime);
+            display.clear();
+        }
+    }
+
     // Show animation after factory reset (infinity sign animation)
     void factoryResetAnimation()
     {
         uint8_t delayTime = 100;
         uint8_t repeats = 3;
 
-        for (int i = 0; i < repeats; i++)
+        for (uint8_t i = 0; i < repeats; i++)
         {
             display.clear();
 
