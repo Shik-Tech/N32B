@@ -43,7 +43,7 @@ MIDI_CREATE_INSTANCE(HardwareSerial, Serial1, MIDICoreSerial);
 
 void setup()
 {
-  Serial.begin(115200);
+  // Serial.begin(115200);
 
   n32b_display.setBright(1);     // Set the display brightness (1-15)
   n32b_display.setDigitLimit(2); // Set amount of digits in the display
@@ -86,7 +86,7 @@ void setup()
     // If button is still held down, then clear eeprom
     if (buttonPressed)
     {
-      wasFactoryReset == true;
+      wasFactoryReset = true;
       // Blink once if reset request has been accepted
       digitalWrite(LED_PIN, HIGH);
       delay(20);
@@ -174,7 +174,7 @@ void loop()
   if (wasFactoryReset)
   {
     n32b_display.factoryResetAnimation();
-    wasFactoryReset == false;
+    wasFactoryReset = false;
   }
 
   mux.update(doMidiRead);

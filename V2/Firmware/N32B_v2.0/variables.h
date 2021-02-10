@@ -35,7 +35,7 @@ struct Preset_t
 
 /* Device setup data */
 
-#define currentPresetNumber (byte) 0
+byte currentPresetNumber = 0;
 Preset_t activePreset;
 
 // unsigned int knobBuffer[4][32];
@@ -43,15 +43,14 @@ unsigned int knobBuffer[4][32];
 unsigned int emittedValue[3][32];
 
 /* Buttons variables */
-#define SHORT_PRESS_TIME (const unsigned int)1000 // 1 Second
-#define LONG_PRESS_TIME (const unsigned int)1500 // 1.5 Seconds
+#define SHORT_PRESS_TIME (const unsigned int)600 // Milliseconds
+#define LONG_PRESS_TIME (const unsigned int)1000 // Milliseconds
 unsigned long pressedTime = 0;
-// unsigned long releasedTime = 0;
-#define isPressingAButton (bool)false
-#define isPressingBButton (bool)false
-#define isPresetMode (bool)false
+bool isPressingAButton = false;
+bool isPressingBButton = false;
+bool isPresetMode = false;
 
-#define wasFactoryReset (bool)false
+bool wasFactoryReset = false;
 // byte index in EEPROM for the last used preset
 #define lastUsedPresetAddress (uint8_t)0
 

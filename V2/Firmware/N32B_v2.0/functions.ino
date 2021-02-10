@@ -109,7 +109,6 @@ void changeChannel(bool direction)
     else
       activePreset.channel = 16;
   }
-  n32b_display.showChannelNumber(activePreset.channel);
 }
 
 void changePreset(bool direction)
@@ -132,19 +131,17 @@ void changePreset(bool direction)
   }
   // MIDICoreSerial.sendProgramChange(currentPresetNumber, 1);
   // MIDICoreUSB.sendProgramChange(currentPresetNumber, 1);
-
-  n32b_display.showPresetNumber(currentPresetNumber);
 }
 
 void buttonReleaseAction(bool direction)
 {
   if (direction)
   {
-    isPressingAButton == false;
+    isPressingAButton = false;
   }
   else
   {
-    isPressingBButton == false;
+    isPressingBButton = false;
   }
 
   if (millis() - pressedTime < SHORT_PRESS_TIME)
@@ -152,10 +149,12 @@ void buttonReleaseAction(bool direction)
     if (isPresetMode)
     {
       changePreset(direction);
+      n32b_display.showPresetNumber(currentPresetNumber);
     }
     else
     {
       changeChannel(direction);
+      n32b_display.showChannelNumber(activePreset.channel);
     }
   }
 
@@ -179,13 +178,13 @@ void renderFunctionButton()
 
   if (buttonA.isPressed())
   {
-    isPressingAButton == true;
+    isPressingAButton = true;
     buttonPressAction(1);
   }
 
   if (buttonB.isPressed())
   {
-    isPressingBButton == true;
+    isPressingBButton = true;
     buttonPressAction(0);
   }
 
@@ -204,11 +203,13 @@ void renderFunctionButton()
   {
     if (isPressingAButton)
     {
-      isPresetMode == false;
+      isPresetMode = false;
+      n32b_display.showChannelNumber(activePreset.channel);
     }
     if (isPressingBButton)
     {
-      isPresetMode == true;
+      isPresetMode = true;
+      n32b_display.showPresetNumber(currentPresetNumber);
     }
   }
 }
@@ -218,28 +219,6 @@ void doMidiRead()
   MIDICoreSerial.read();
   MIDICoreUSB.read();
 }
-
-// Updates the buffers and samples the analog pin
-// void updateKnob(uint8_t index)
-// {
-//   for (uint8_t i = 3; i > 0; i--)
-//   {
-//     knobBuffer[i][index] = knobBuffer[i - 1][index];
-//   }
-//   knobBuffer[0][index] = mux.read(index);
-// }
-
-// Returns average of previous knob reads
-
-// void updateKnobs() {
-//   for (uint8_t currentKnob = 0; currentKnob < NUMBER_OF_KNOBS; currentKnob++)
-//   {
-//     doMidiRead();                             // Read
-//     // updateKnob(currentKnob);                  // Update buffers
-//     doMidiRead();                             // Read
-//     interpretKnob(currentKnob, false, false); // Send
-//   }
-// }
 
 uint16_t getKnobValue(uint8_t index)
 {

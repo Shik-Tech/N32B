@@ -153,7 +153,7 @@ void handleProgramChange(byte channel, byte number)
     if (number < 5)
     {
         loadPreset(number);
-        isPresetMode == true;
+        // isPresetMode = true;
     }
 }
 

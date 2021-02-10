@@ -21,9 +21,6 @@
 #define MAJOR_VERSION (const int)0x02
 #define MINOR_VERSION (const int)0x00
 #define POINT_VERSION (const int)0x01
-// uint8_t MAJOR_VERSION = 0xAB;
-// uint8_t MINOR_VERSION = 0x3D;
-// uint8_t POINT_VERSION = 0x66;
 
 // SYSEX constants
 // const uint8_t SHIK_MANUFACTURER_ID = 32;
