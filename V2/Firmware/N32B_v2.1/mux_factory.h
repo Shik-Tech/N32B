@@ -1,3 +1,10 @@
+/*
+  N32B Firmware v2.1
+  MIT License
+
+  Copyright (c) 2021 SHIK
+*/
+
 #ifndef MUX_FACTORY_h
 #define MUX_FACTORY_h
 
