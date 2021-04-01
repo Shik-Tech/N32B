@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -35,25 +35,27 @@ struct Preset_t
 
 /* Device setup data */
 
-byte currentPresetNumber;
+byte currentPresetNumber = 0;
 Preset_t activePreset;
 
+// unsigned int knobBuffer[4][32];
 unsigned int knobBuffer[4][32];
 unsigned int emittedValue[3][32];
 
 /* Buttons variables */
-const unsigned int SHORT_PRESS_TIME = 1000; // 1 Second
-const unsigned int LONG_PRESS_TIME  = 1500; // 1.5 Seconds
-unsigned long pressedTime  = 0;
-// unsigned long releasedTime = 0;
+#define SHORT_PRESS_TIME (const unsigned int)600 // Milliseconds
+#define LONG_PRESS_TIME (const unsigned int)1000 // Milliseconds
+unsigned long pressedTime = 0;
 bool isPressingAButton = false;
 bool isPressingBButton = false;
-bool isLongDetected = false;
-bool isPresetMode = false;
 
-bool wasFactoryReset;
-bool wasStartingUp = 0;
+/* Mode variables */
+bool startUp = true;
+bool isPresetMode = false;
+bool inhibitMidi = false;
+
+bool wasFactoryReset = false;
 // byte index in EEPROM for the last used preset
-const uint8_t lastUsedPresetAddress = 0;
+#define lastUsedPresetAddress (uint8_t)0
 
 #endif

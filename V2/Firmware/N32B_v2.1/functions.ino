@@ -1,9 +1,24 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
 */
+
+// void onUsbMessage(const MidiMessage& message)
+void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::MidiMessage &message)
+{
+  MIDICoreSerial.send(message);
+  n32b_display.blinkDot(1);
+}
+
+// void onSerialMessage(const MidiMessage& message)
+void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
+{
+  // MIDICoreUSB.send(message);
+  MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
+  n32b_display.blinkDot(1);
+}
 
 void interpretKnob(uint8_t index, bool force, bool inhibit)
 {
@@ -18,28 +33,31 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
       // CC Message
       if (!inhibit)
       {
-        // Check if channel is defined for this knob
+        // Check if it is channel specific message
         uint8_t knobChannel = activePreset.knobInfo[index].CHANNEL & 0x7f;
         if (knobChannel > 0 && knobChannel < 17)
         {
-          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, knobChannel);
+          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, knobChannel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
         }
         else if (knobChannel == 0)
         {
-          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
+          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
         }
+        n32b_display.blinkDot(2);
       }
     }
     else
     {
       // NRPN Message
-      sendNRPM(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
+      sendNRPM(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
+      n32b_display.blinkDot(2);
     }
 
-    n32b_display.valueAnimation(toSend);
+    // n32b_display.valueAnimation(toSend);
+    // n32b_display.displayCurrentValue(toSend);
 
     // Fill the emission buffers
-    for (uint8_t i = 2; i > 0; i--)
+    for (uint8_t i = 1; i > 0; i--)
     {
       emittedValue[i][index] = emittedValue[i - 1][index];
     }
@@ -47,12 +65,14 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
   }
 }
 
-void sendCCMessage(byte MSB, byte LSB, uint16_t value, byte channel)
+void sendCCMessage(uint8_t MSB, uint8_t LSB, uint16_t value, uint8_t channel, uint8_t minValue, uint8_t maxValue)
 {
   if (activePreset.highResolution)
   {
-    unsigned int mappedValue = map(value, 0, 1023, 0, 16383);
-    unsigned int shiftedValue = mappedValue << 1;
+    uint16_t minRange = map(minValue, 0, 127, 0, 1023);
+    uint16_t maxRange = map(maxValue, 0, 127, 0, 1023);
+    unsigned int shiftedValue = map(map(value, 0, 1023, minRange, maxRange), 0, 1023, 0, 16383) << 1;
+
     MIDICoreSerial.sendControlChange(MSB, highByte(shiftedValue), channel);
     MIDICoreSerial.sendControlChange(LSB, lowByte(shiftedValue) >> 1, channel);
 
@@ -61,31 +81,31 @@ void sendCCMessage(byte MSB, byte LSB, uint16_t value, byte channel)
   }
   else
   {
-    byte lowResSend = map(value, 0, 1023, 0, 127);
+    uint8_t lowResSend = map(value, 0, 1023, 0, 127);
     MIDICoreSerial.sendControlChange(MSB, lowResSend, channel);
     MIDICoreUSB.sendControlChange(MSB, lowResSend, channel);
   }
 }
 
-void sendNRPM(uint8_t NRPNNumberMSB, uint8_t NRPNNumberLSB, int16_t value, uint8_t channel)
+void sendNRPM(uint8_t NRPNNumberMSB, uint8_t NRPNNumberLSB, int16_t value, uint8_t channel, uint8_t minValue, uint8_t maxValue)
 {
-
-  unsigned int mappedValue = map(value, 0, 1023, 0, 16383);
-  unsigned int shiftedValue = mappedValue << 1;
-
-  MIDICoreSerial.sendControlChange(98, NRPNNumberLSB & 0x7F, channel); // NRPN LSB
-  MIDICoreUSB.sendControlChange(98, NRPNNumberLSB & 0x7F, channel);    // NRPN LSB
+  uint16_t minRange = map(minValue, 0, 127, 0, 1023);
+  uint16_t maxRange = map(maxValue, 0, 127, 0, 1023);
+  unsigned int shiftedValue = map(map(value, 0, 1023, minRange, maxRange), 0, 1023, 0, 16383) << 1;
 
   MIDICoreSerial.sendControlChange(99, NRPNNumberMSB & 0x7F, channel); // NRPN MSB
   MIDICoreUSB.sendControlChange(99, NRPNNumberMSB & 0x7F, channel);    // NRPN MSB
 
-  MIDICoreSerial.sendControlChange(6, (value >> 7) & 0x7f, channel); // Data Entry MSB
-  MIDICoreUSB.sendControlChange(6, (value >> 7) & 0x7f, channel);    // Data Entry MSB
+  MIDICoreSerial.sendControlChange(98, NRPNNumberLSB & 0x7F, channel); // NRPN LSB
+  MIDICoreUSB.sendControlChange(98, NRPNNumberLSB & 0x7F, channel);    // NRPN LSB
+
+  MIDICoreSerial.sendControlChange(6, highByte(shiftedValue), channel); // Data Entry MSB
+  MIDICoreUSB.sendControlChange(6, highByte(shiftedValue), channel);    // Data Entry MSB
 
   if (activePreset.highResolution)
   {
-    MIDICoreSerial.sendControlChange(38, value & 0x7f, channel); // LSB for Control 6 (Data Entry)
-    MIDICoreUSB.sendControlChange(38, value & 0x7f, channel);    // LSB for Control 6 (Data Entry)
+    MIDICoreSerial.sendControlChange(38, lowByte(shiftedValue) >> 1, channel); // LSB for Control 6 (Data Entry)
+    MIDICoreUSB.sendControlChange(38, lowByte(shiftedValue) >> 1, channel);    // LSB for Control 6 (Data Entry)
   }
 }
 
@@ -127,8 +147,8 @@ void changePreset(bool direction)
     else
       loadPreset(4);
   }
-  MIDICoreSerial.sendProgramChange(currentPresetNumber, 1);
-  MIDICoreUSB.sendProgramChange(currentPresetNumber, 1);
+  // MIDICoreSerial.sendProgramChange(currentPresetNumber, 1);
+  // MIDICoreUSB.sendProgramChange(currentPresetNumber, 1);
 }
 
 void buttonReleaseAction(bool direction)
@@ -144,13 +164,16 @@ void buttonReleaseAction(bool direction)
 
   if (millis() - pressedTime < SHORT_PRESS_TIME)
   {
+    inhibitMidi = true;
     if (isPresetMode)
     {
       changePreset(direction);
+      n32b_display.showPresetNumber(currentPresetNumber);
     }
     else
     {
       changeChannel(direction);
+      n32b_display.showChannelNumber(activePreset.channel);
     }
   }
 
@@ -166,7 +189,7 @@ void buttonPressAction(bool direction)
   MIDICoreUSB.turnThruOff();
 }
 
-void renderFunctionButton()
+void renderButtonFunctions()
 {
   // Must call the loop() function first
   buttonA.loop();
@@ -200,10 +223,30 @@ void renderFunctionButton()
     if (isPressingAButton)
     {
       isPresetMode = false;
+      n32b_display.showChannelNumber(activePreset.channel);
     }
     if (isPressingBButton)
     {
       isPresetMode = true;
+      n32b_display.showPresetNumber(currentPresetNumber);
     }
   }
+}
+
+void doMidiRead()
+{
+  MIDICoreSerial.read();
+  MIDICoreUSB.read();
+}
+
+uint16_t getKnobValue(uint8_t index)
+{
+  uint16_t average = 0;
+  for (uint8_t i = 0; i < 4; i++)
+  {
+    average += knobBuffer[i][index];
+  }
+  average /= 4;
+
+  return average;
 }

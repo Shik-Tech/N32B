@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -74,6 +74,8 @@ void loadPreset(uint8_t presetNumber)
 
     // Update the last used preset
     currentPresetNumber = presetNumber;
+    n32b_display.showPresetNumber(presetNumber);
+
     // Save current preset as the active preset.
     // Is commented out to prevent EEPROM from over used
     // EEPROM.update(lastUsedPresetAddress, currentPresetNumber);

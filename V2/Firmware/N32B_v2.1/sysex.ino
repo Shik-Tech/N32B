@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.0
+  N32B Firmware v2.1
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -17,19 +17,19 @@ void processSysex(byte *data, unsigned size)
         {
         case SET_KNOB_AS_CC:
         {
-            setKnobAsCC(data[KNOB_INDEX], data[MSB], data[LSB], data[MIN_VALUE], data[MAX_VALUE]);
+            setKnobAsCC(data[KNOB_INDEX], data[MSB_INDEX], data[LSB_INDEX], data[MIN_VALUE_INDEX], data[MAX_VALUE_INDEX]);
             break;
         }
 
         case SET_KNOB_AS_CC_CHANNEL:
         {
-            setKnobAsCCWithChannel(data[KNOB_INDEX], data[MSB], data[LSB], data[CHANNEL], data[MIN_VALUE], data[MAX_VALUE]);
+            setKnobAsCCWithChannel(data[KNOB_INDEX], data[MSB_INDEX], data[LSB_INDEX], data[CHANNEL_INDEX], data[MIN_VALUE_INDEX], data[MAX_VALUE_INDEX]);
             break;
         }
 
         case SET_KNOB_AS_NRPN:
         {
-            setKnobAsNRPN(data[KNOB_INDEX], data[MSB], data[LSB], data[MIN_VALUE], data[MAX_VALUE]);
+            setKnobAsNRPN(data[KNOB_INDEX], data[MSB_INDEX], data[LSB_INDEX], data[MIN_VALUE_INDEX], data[MAX_VALUE_INDEX]);
             break;
         }
 
@@ -81,7 +81,7 @@ void processSysex(byte *data, unsigned size)
     }
     else
     {
-        Serial.println("Manufacturer ID is not matching the N32B");
+        // Serial.println("Manufacturer ID is not matching the N32B");
     }
 }
 
@@ -153,7 +153,7 @@ void handleProgramChange(byte channel, byte number)
     if (number < 5)
     {
         loadPreset(number);
-        isPresetMode = true;
+        // isPresetMode = true;
     }
 }
 
