@@ -1,5 +1,5 @@
 /*
-  N32B Firmware v2.1
+  N32B Firmware v3.0
   MIT License
 
   Copyright (c) 2021 SHIK
@@ -13,7 +13,7 @@ void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::Midi
 }
 
 // void onSerialMessage(const MidiMessage& message)
-void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial> >::MidiMessage &message)
+void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial>>::MidiMessage &message)
 {
   // MIDICoreUSB.send(message);
   MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
@@ -37,11 +37,11 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
         uint8_t knobChannel = activePreset.knobInfo[index].CHANNEL & 0x7f;
         if (knobChannel > 0 && knobChannel < 17)
         {
-          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, knobChannel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
+          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, knobChannel);
         }
         else if (knobChannel == 0)
         {
-          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
+          sendCCMessage(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
         }
         n32b_display.blinkDot(2);
       }
@@ -49,12 +49,9 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
     else
     {
       // NRPN Message
-      sendNRPM(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel, activePreset.knobInfo[index].minValue, activePreset.knobInfo[index].maxValue);
+      sendNRPM(activePreset.knobInfo[index].MSB, activePreset.knobInfo[index].LSB, toSend, activePreset.channel);
       n32b_display.blinkDot(2);
     }
-
-    // n32b_display.valueAnimation(toSend);
-    // n32b_display.displayCurrentValue(toSend);
 
     // Fill the emission buffers
     for (uint8_t i = 2; i > 0; i--)
@@ -65,13 +62,11 @@ void interpretKnob(uint8_t index, bool force, bool inhibit)
   }
 }
 
-void sendCCMessage(uint8_t MSB, uint8_t LSB, uint16_t value, uint8_t channel, uint8_t minValue, uint8_t maxValue)
+void sendCCMessage(uint8_t MSB, uint8_t LSB, uint16_t value, uint8_t channel)
 {
   if (activePreset.highResolution)
   {
-    uint16_t minRange = map(minValue, 0, 127, 0, 1023);
-    uint16_t maxRange = map(maxValue, 0, 127, 0, 1023);
-    unsigned int shiftedValue = map(map(value, 0, 1023, minRange, maxRange), 0, 1023, 0, 16383) << 1;
+    unsigned int shiftedValue = map(value, 0, 1023, 0, 16383) << 1;
 
     MIDICoreSerial.sendControlChange(MSB, highByte(shiftedValue), channel);
     MIDICoreSerial.sendControlChange(LSB, lowByte(shiftedValue) >> 1, channel);
@@ -81,17 +76,15 @@ void sendCCMessage(uint8_t MSB, uint8_t LSB, uint16_t value, uint8_t channel, ui
   }
   else
   {
-    uint8_t lowResSend = map(value, 0, 1023, 0, 127);
-    MIDICoreSerial.sendControlChange(MSB, lowResSend, channel);
-    MIDICoreUSB.sendControlChange(MSB, lowResSend, channel);
+    // uint8_t lowResSend = map(value, 0, 1023, 0, 127);
+    MIDICoreSerial.sendControlChange(MSB, value, channel);
+    MIDICoreUSB.sendControlChange(MSB, value, channel);
   }
 }
 
-void sendNRPM(uint8_t NRPNNumberMSB, uint8_t NRPNNumberLSB, int16_t value, uint8_t channel, uint8_t minValue, uint8_t maxValue)
+void sendNRPM(uint8_t NRPNNumberMSB, uint8_t NRPNNumberLSB, int16_t value, uint8_t channel)
 {
-  uint16_t minRange = map(minValue, 0, 127, 0, 1023);
-  uint16_t maxRange = map(maxValue, 0, 127, 0, 1023);
-  unsigned int shiftedValue = map(map(value, 0, 1023, minRange, maxRange), 0, 1023, 0, 16383) << 1;
+  unsigned int shiftedValue = map(value, 0, 1023, 0, 16383) << 1;
 
   MIDICoreSerial.sendControlChange(99, NRPNNumberMSB & 0x7F, channel); // NRPN MSB
   MIDICoreUSB.sendControlChange(99, NRPNNumberMSB & 0x7F, channel);    // NRPN MSB
@@ -242,11 +235,11 @@ void doMidiRead()
 uint16_t getKnobValue(uint8_t index)
 {
   uint16_t average = 0;
-  for (uint8_t i = 0; i < 4; i++)
+  for (uint8_t i = 0; i < 5; i++)
   {
     average += knobBuffer[i][index];
   }
-  average /= 4;
+  average /= 5;
 
   return average;
 }
