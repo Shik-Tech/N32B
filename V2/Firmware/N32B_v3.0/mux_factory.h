@@ -60,7 +60,11 @@ private:
                 {
                     knobBuffer[j][index] = knobBuffer[j - 1][index];
                 }
-                knobBuffer[0][index] = analogRead(signalPin[i]);
+                if (activePreset.highResolution) {
+                    knobBuffer[0][index] = analogRead(signalPin[i]);
+                } else {
+                    knobBuffer[0][index] = analogRead(signalPin[i]) >> 3;
+                }
                 doMidiRead();
             }
         }

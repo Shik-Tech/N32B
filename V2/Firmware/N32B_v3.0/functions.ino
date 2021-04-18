@@ -76,9 +76,9 @@ void sendCCMessage(uint8_t MSB, uint8_t LSB, uint16_t value, uint8_t channel)
   }
   else
   {
-    uint8_t lowResSend = map(value, 0, 1023, 0, 127);
-    MIDICoreSerial.sendControlChange(MSB, lowResSend, channel);
-    MIDICoreUSB.sendControlChange(MSB, lowResSend, channel);
+    // uint8_t lowResSend = map(value, 0, 1023, 0, 127);
+    MIDICoreSerial.sendControlChange(MSB, value, channel);
+    MIDICoreUSB.sendControlChange(MSB, value, channel);
   }
 }
 
