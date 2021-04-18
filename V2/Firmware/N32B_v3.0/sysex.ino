@@ -7,10 +7,6 @@
 
 void processSysex(byte *data, unsigned size)
 {
-
-    // Serial.println("sysex: ");
-    // printHexArray(data, size);
-
     if (size > 3 && data[MANUFACTURER] == SHIK_MANUFACTURER_ID)
     {
         switch (data[COMMAND])
@@ -147,45 +143,5 @@ void handleProgramChange(byte channel, byte number)
     if (number < 5)
     {
         loadPreset(number);
-        // isPresetMode = true;
     }
 }
-
-// void sendCurrentConfig()
-// {
-//     byte sysexData[64];
-
-//     // Manufacturer
-//     sysexData[0] = SHIK_MANUFACTURER_ID;
-//     sysexData[1] = 0x00;
-//     sysexData[2] = 0x00;
-
-//     // ConFig;
-//     sysexData[3] = 0x0F;
-
-//     sysexData[4] = MAJOR_VERSION; // major version
-//     sysexData[5] = MINOR_VERSION; // minor version
-//     sysexData[6] = POINT_VERSION; // point version
-
-//     byte buffer[sizeof(Preset_t)];
-//     uint16_t baseAddress = 1 + (currentPresetNumber * sizeof(Preset_t));
-
-//     readEEPROMArray(baseAddress, buffer, sizeof(Preset_t));
-
-//     int offset = 7;
-//     for (int i = 0; i < sizeof(Preset_t); i++)
-//     {
-//         byte data = buffer[i];
-//         if (data == 0xff)
-//         {
-//             data = 0x7f;
-//         }
-//         sysexData[i + offset] = data;
-//     }
-
-//     Serial.println("Sending this data:");
-//     printHexArray(sysexData, sizeof(Preset_t) + offset);
-
-//     MIDICoreUSB.sendSysEx(8 + offset, sysexData, false);
-//     Serial.println("Done sending.");
-// }

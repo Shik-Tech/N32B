@@ -33,7 +33,6 @@ struct Preset_t
 };
 
 /* Device setup data */
-
 byte currentPresetNumber = 0;
 Preset_t activePreset;
 

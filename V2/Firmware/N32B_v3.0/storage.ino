@@ -62,7 +62,6 @@ void loadPreset(uint8_t presetNumber)
 {
   if (presetNumber < 5)
   {
-
     uint16_t baseAddress = 1 + (presetNumber * sizeof(Preset_t));
     // Read the active preset from EEPROM; byte by byte
     for (uint16_t byteIndex = 0; byteIndex < sizeof(Preset_t); byteIndex++)

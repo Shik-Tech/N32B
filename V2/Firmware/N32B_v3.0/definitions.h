@@ -30,13 +30,12 @@
 /*--- EEPROM Format Chuncks ---*/
 // Change these any time the data structure of a preset changed
 // This will trigger reformatting on the next startup
-#define MAJOR_VERSION (const int)2
-#define MINOR_VERSION (const int)1
+#define MAJOR_VERSION (const int)3
+#define MINOR_VERSION (const int)0
 #define POINT_VERSION (const int)0
 
 // SYSEX constants
 #define SHIK_MANUFACTURER_ID (const uint8_t)32
-// #define SHIK_MANUFACTURER_ID (const uint8_t)124
 
 #define MANUFACTURER (const uint8_t)1
 #define COMMAND (const uint8_t)2
@@ -44,8 +43,6 @@
 #define MSB_INDEX (const uint8_t)4
 #define LSB_INDEX (const uint8_t)5
 #define CHANNEL_INDEX (const uint8_t)6
-#define MIN_VALUE_INDEX (const uint8_t)7
-#define MAX_VALUE_INDEX (const uint8_t)8
 
 #define SET_KNOB_AS_CC (const uint8_t)1         // CC
 #define SET_KNOB_AS_CC_CHANNEL (const uint8_t)2 // CC & Channel
