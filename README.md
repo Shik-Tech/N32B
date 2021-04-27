@@ -8,7 +8,9 @@ You will find the schematics, gerber files, firmeware and enclosure files in thi
 Feel free to fork, we would love to see what you created!
 
 ## Licensing
-Hardware license is under CC0 1.0 Universal.
+![](License.svg)
+
+Hardware and documentation license is under CC0 1.0 Universal.
 
 Firemware license is under MIT License.
 
