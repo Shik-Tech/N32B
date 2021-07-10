@@ -32,7 +32,7 @@
 // This will trigger reformatting on the next startup
 #define MAJOR_VERSION (const int)3
 #define MINOR_VERSION (const int)0
-#define POINT_VERSION (const int)0
+#define POINT_VERSION (const int)1
 
 // SYSEX constants
 #define SHIK_MANUFACTURER_ID (const uint8_t)32

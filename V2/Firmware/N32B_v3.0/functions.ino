@@ -15,9 +15,11 @@ void onUsbMessage(const MidiInterface<USBMIDI_NAMESPACE::usbMidiTransport>::Midi
 // void onSerialMessage(const MidiMessage& message)
 void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial>>::MidiMessage &message)
 {
-  // MIDICoreUSB.send(message);
-  MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
-  n32b_display.blinkDot(1);
+  // MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
+  if(MIDICoreSerial.getType() < 254) {
+    MIDICoreUSB.send(message);
+    n32b_display.blinkDot(1);
+  }
 }
 
 void interpretKnob(uint8_t index, bool force, bool inhibit)
