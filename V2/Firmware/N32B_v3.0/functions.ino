@@ -17,7 +17,7 @@ void onSerialMessage(const MidiInterface<SerialMIDI<HardwareSerial>>::MidiMessag
 {
   // MIDICoreUSB.sendControlChange(message.data1, message.data2, message.channel);
   if(MIDICoreSerial.getType() < 254) {
-    MIDICoreUSB.send(message);
+    MIDICoreUSB.send(message.type, message.data1, message.data2, message.channel);
     n32b_display.blinkDot(1);
   }
 }
