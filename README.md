@@ -7,6 +7,11 @@ You can contribute, build your own or buy a full working device.
 You will find the schematics, gerber files, firmeware and enclosure files in this repo.
 Feel free to fork, we would love to see what you created!
 
+# New Firmware Repository
+A separate repository is available for the device firmware. This repository will not be updated and maintained with new firmwares.
+Please refer to this repository:
+https://github.com/Shik-Tech/N32B_HiRes
+
 ## Licensing
 ![](License.svg)
 
