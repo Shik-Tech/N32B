@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "N32B Graphics")(type KiCad)(uri /Users/shiko/Repositories/N32B_Hardware/CAD/Graphics)(options "")(descr ""))
+)

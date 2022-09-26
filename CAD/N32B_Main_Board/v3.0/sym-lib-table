@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "N32B-rescue")(type "Legacy")(uri "${KIPRJMOD}/N32B-rescue.lib")(options "")(descr ""))
+  (lib (name "F8-rescue")(type "Legacy")(uri "${KIPRJMOD}/F8-rescue.lib")(options "")(descr ""))
+)

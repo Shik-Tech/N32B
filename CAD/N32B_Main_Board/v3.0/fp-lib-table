@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name "N32B Graphics")(type "KiCad")(uri "/Users/shiko/Repositories/N32B_Hardware/CAD/Graphics")(options "")(descr ""))
+  (lib (name "F8 Mods")(type "KiCad")(uri "/Users/shiko/Repositories/F8_Hardware/CAD/mods")(options "")(descr ""))
+)

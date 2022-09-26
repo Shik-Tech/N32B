@@ -1,16 +1,21 @@
-# N32B
+# N32B - Midi Controller
 N32B Midi controller is an open source hardware and software.
-We use the arduino pro micro as the heart of the controller. The N32B is basically an arduino shield and easy to solder.
+We use the arduino pro micro as the heart of the controller. The N32B is basically an arduino shield and easy to solder project.
 
 You can contribute, build your own or buy a full working device.
 
-You will find the schematics, gerber files, firmeware and enclosure files in this repo.
+You will find the schematics and board layout files in this repository.
 Feel free to fork, we would love to see what you created!
 
-# New Firmware Repository
-A separate repository is available for the device firmware. This repository will not be updated and maintained with new firmwares.
-Please refer to this repository:
+# Firmware Repositories
+A separate repositories are available for the device firmware variations:
+
+Midi CC firmware:
 https://github.com/Shik-Tech/N32B_HiRes
+
+SysEx firmware:
+https://github.com/Shik-Tech/N32B-sysEx
+
 
 ## Licensing
 ![](License.svg)
